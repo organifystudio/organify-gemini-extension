@@ -1,0 +1,13 @@
+description = "Triage an Organify task with project context and activity trail"
+
+prompt = """
+Triage the Organify task identified in "{{args}}" (a task name, ID, or link).
+
+Steps:
+1. Resolve the task: if given a name only, find its project first (organify.workspaces.by-owner → organify.projects.by-workspace → organify.projects.tasks-by-project), then match by name.
+2. Call organify.tasks.detail and organify.tasks.activity for the full picture.
+
+Output state, assignees, priority/blockers, and a short timeline of recent activity. End with a suggested next action. Synthesize — don't paste raw tool output.
+
+If authentication is required, ask the user to complete the OAuth flow (/mcp auth). Never ask for a password or token.
+"""

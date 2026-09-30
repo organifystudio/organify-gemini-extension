@@ -1,0 +1,16 @@
+{
+  "name": "organify",
+  "version": "1.0.0",
+  "description": "Manage Organify workspaces, projects, tasks and sprints via Organify's hosted MCP server.",
+  "mcpServers": {
+    "organify": {
+      "httpUrl": "https://mcp.organify.studio/mcp",
+      "timeout": 30000,
+      "oauth": {
+        "enabled": true,
+        "scopes": ["mcp:tools"]
+      }
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}

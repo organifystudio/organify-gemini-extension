@@ -1,0 +1,13 @@
+description = "Unread Organify notifications and who's online"
+
+prompt = """
+Show what's new in the user's Organify. "{{args}}" may contain a workspace name to scope to (otherwise cover all workspaces).
+
+Steps:
+1. Call organify.notifications.unread-count (scoped to the workspace if one was given/resolved).
+2. Optionally call organify.notifications.online-users for presence.
+
+Output a short digest: unread count and the most important items first. Keep it brief. Synthesize — don't paste raw tool output.
+
+If authentication is required, ask the user to complete the OAuth flow (/mcp auth). Never ask for a password or token.
+"""

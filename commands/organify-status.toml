@@ -1,0 +1,14 @@
+description = "Project status brief for an Organify project (tasks, blockers, members)"
+
+prompt = """
+Produce a status brief for the Organify project named or linked in "{{args}}" (a name like "website redesign" or a board.organify.studio/<workspace>/projects/<projectId> or app.organify.studio/... link).
+
+Steps:
+1. If given a link, extract the workspace slug and project ID from the URL. Otherwise resolve names to IDs: organify.workspaces.by-owner (ask for the account email if the user ID is unknown), then organify.projects.by-workspace, matching by name.
+2. Call organify.projects.summary for the project.
+3. If open tasks need detail, call organify.projects.tasks-by-project and organify.tasks.detail for the most relevant ones.
+
+Output a concise brief: project name, open vs done counts, top blockers/at-risk tasks, key members. Synthesize — don't paste raw tool output. If the project can't be found or isn't accessible, say so plainly instead of retrying with guessed IDs.
+
+If authentication is required, ask the user to complete the OAuth flow (/mcp auth). Never ask for a password or token.
+"""
